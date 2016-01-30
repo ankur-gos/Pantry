@@ -16,7 +16,7 @@ exports.postTwilioMessage = function(req, res, next){
         handleTextSave(err, req.body.Body, next);
     })
     var twiml = new twilio.TwimlResponse();
-    twiml.message('Hello World')
+    twiml.message('Message received. You\'ll be notified of your order approval');
     res.set('Content-Type', 'text/xml');
     res.send(twiml.toString());
 }
