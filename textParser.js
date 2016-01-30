@@ -1,8 +1,8 @@
 var request = "eggs, milk, pasta";
 
-exports.textParser = function(var request)  {
+exports.textParser = function(request, callback)  {
 	if (request.indexOf(',') > -1) {
 	    var noCommas = request.split(',');
-	    console.log(noCommas);
+	    callback(noCommas);
 	}
 }
