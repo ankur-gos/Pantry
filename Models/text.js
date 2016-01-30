@@ -8,6 +8,6 @@ var TextSchema = new mongoose.Schema({
     dateSent: String,
     number: String,
     body: String,
-})
+});
 
 module.exports = mongoose.model('Text', TextSchema);

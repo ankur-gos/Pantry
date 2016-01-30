@@ -1,15 +1,15 @@
 var request = "eggs, milk, pasta";
 
-exports.textParser = function(request, callback)  {
+exports.parseText = function(request, callback)  {
 	if (request.indexOf(',') > -1) {
         var splitOnColon = request.split(':');
         if(splitOnColon.length != 2)
             throw new Error("Multiple colons found");
-        addressParser(splitOnColon, callback)
+        parseAddress(splitOnColon, callback)
 	}
 }
 
-function addressParser(splitArray, callback){
+function parseAddress(splitArray, callback){
     var address = splitArray[1];
     address = address.trim();
     handleAddressParser(splitArray[0], address, callback);
