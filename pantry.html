@@ -12,11 +12,13 @@
     
   <link href="favicon.ico" rel="icon" type="image/x-icon" />
   
+  <link rel="stylesheet" href="style.css">
+
   </head>
 
-  <body>
+  <body ng-app = "myApp">
     <!-- Menu -->
-    <div class = "navbar navbar-inverse navbar-fixed-top">
+    <div class = "navbar navbar-inverse navbar-fixed-top" >
       <div class = "container">
 
         <a href = "pantry.html" class = "navbar-brand">Pantry</a>
@@ -41,7 +43,7 @@
                 Resources <b class = "caret"></b></a>
               <ul class = "dropdown-menu">
                 <li><a href = "http://www.santacruzhsc.org">Santa Cruz Homeless Services Center</a></li>
-                <li><a href = "http://www.pornhub.com">Red Cross Foundation</a></li>
+                <li><a href = "http://www.endveteranhomelessness.org/education/homeless-registry">Homeless Veteran Registry</a></li>
 
                 <!-- add more links -->
               </ul>
@@ -54,6 +56,17 @@
           </ul>
         </div>
 
+      </div>
+    </div>
+
+    <!-- Request Sidebar -->
+    <div class="container" id = "sidebar1234" ng-controller ="mainController">
+      <div data-ng-init="init()"> </div>
+      <div class = "sidebar-nav"ng-repeat= "item in loadedItems| limitTo:10:0| orderBy:'-count'" >
+        <!--<h2>Needed Items</h2>-->
+        <li id = "sideList"><a href="#">{{item.itemName + '   '}} <span class="badge">{{item.count}}</span></a></li>
+        <!-- <li><a href="#">Groceries <span class="badge">10</span></a></li> -->
+        <!-- <li><a href="#">Hygiene <span class="badge">2</span></a></li> -->
       </div>
     </div>
 
@@ -79,7 +92,6 @@
           <div class = "modal-footer">
 
             <a class = "btn btn-default" data-dismiss = "modal">Login</a>
-            <a class = "btn btn-primary" data-dismiss = "modal">Cancel</a>
 
           </div>
         </div>
@@ -90,6 +102,7 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
     integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="Angularscript.js"></script>
   </body>
 </html>
