@@ -5,7 +5,7 @@ var Donatable = require('../Models/donatable');
 
 exports.createDonatable = function(items, address, next){
     Donatable.findOne({ address: address }, function(err, donatable){
-        handleFindDontable(err, donatable, items, address, next);
+        handleFindDonatable(err, donatable, items, address, next);
     })
 }
 
