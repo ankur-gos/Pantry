@@ -10,9 +10,11 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
     
-  <link href="favicon.ico" rel="icon" type="image/x-icon" />
-  
-  <link rel="stylesheet" href="style.css">
+    <link href="favicon.ico" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cssmenu/dropStyles.css">
+
+    <title>CSS MenuMaker</title>
 
   </head>
 
@@ -59,19 +61,33 @@
       </div>
     </div>
 
-    <!-- Request Sidebar -->
-    <div class="container" id = "sidebar1234" ng-controller ="mainController">
-      <div data-ng-init="init()"> </div>
-      <div class = "sidebar-nav"ng-repeat= "item in loadedItems| limitTo:10:0| orderBy:'-count'" >
-        <!--<h2>Needed Items</h2>-->
+
+<div ng-controller ="mainController">
+  <div id='cssmenu' >
+    <div data-ng-init="init()"> </div>   
+    <ul ng-repeat= "item in categories" >
+      <!-- <li class='active'><a href='#'><span>Home</span></a></li>   -->
+        <li class='has-sub'><a href='#'><span>{{item}}</span></a>
+          <ul ng-repeat= "products in categories" >
+             <li><a href='#'><span>{{products}}</span></a></li>
+             <!-- <li class='last'><a href='#'><span>{{products}}</span></a></li> -->
+          </ul>
+        </li>
+    </ul>
+
+  </div>  
+
+  <!-- Request Sidebar -->
+<!--      <div class="container" id = "sidebar1234">
+       <div data-ng-init="init()"> </div> 
+      <h2>Needed Items</h2>
+      <div class = "sidebar-nav" ng-repeat= "item in loadedItems| limitTo:10:0| orderBy:'-count'" >
+
         <li id = "sideList"><a href="#">{{item.itemName + '   '}} <span class="badge">{{item.count}}</span></a></li>
-        <!-- <li><a href="#">Groceries <span class="badge">10</span></a></li> -->
-        <!-- <li><a href="#">Hygiene <span class="badge">2</span></a></li> -->
-      </div>
-    </div>
-
-
-
+      </div> 
+    </div> -->
+</div>
+   
 
 
     <!-- Login -->
@@ -98,11 +114,12 @@
       </div>
     </div>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-    integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <script src="Angularscript.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+      integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+      <script src="Angularscript.js"></script>
+      <script src="cssmenu/dropScript.js"></script>
   </body>
 </html>
