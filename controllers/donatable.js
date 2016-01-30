@@ -34,3 +34,33 @@ function handleNoDonatable(items, address, next){
 
     donatable.save(next);
 }
+
+exports.removeDonatableItem = function(item, next, callback){
+    Donatable.find(function(err, donatables){
+        handleRemoveDonatableItem(err, donatables, item, next, callback);
+    })
+}
+
+function handleRemoveDonatableItem(err, donatables, item, next, callback){
+    if(err){
+        next(err);
+        return;
+    }
+
+    for(var i = 0; i < donatables.length; i++){
+        var items = donatables[i].items;
+        if(items.indexOf(item) > -1){
+            donatables[i].items = items.filter(function(value){
+                if(value != item){
+                    return true;
+                }
+            });
+            donatables[i].save(function(err){
+                next(err);
+                return;
+            })
+            callback(item, address)
+            break;
+        }
+    }
+}

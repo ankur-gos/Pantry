@@ -21,6 +21,8 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.disable('etag');
+
 app.route('/api/v1/twilio')
   .post(twilioController.postTwilioMessage);
 
