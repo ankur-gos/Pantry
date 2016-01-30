@@ -3,9 +3,9 @@
 
 var Item = require('../Models/item');
 
-exports.iterateDonatable = function(item, amount, next){
+exports.iterateItem = function(item, amount, next){
     Item.findOne({ name: item }, function(err, item){
-
+        handleItem(err, item, amount, next);
     })
 }
 

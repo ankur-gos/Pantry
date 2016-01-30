@@ -12,7 +12,7 @@ exports.createDonatable = function(items, address, next){
 function handleFindDonatable(err, donatable, items, address, next){
     if(err)
         throw err
-    if(!dontable)
+    if(!donatable)
         doSomething
 
     for(var i = 0; i < items.length; i++){
