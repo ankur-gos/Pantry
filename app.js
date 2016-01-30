@@ -12,6 +12,10 @@ var twilioController = require('./controllers/twilio')
 
 var app = express();
 
+mongoose.connect('mongodb://localhost:27017/Shindig', function(err){
+  if(err) throw err;
+});
+
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
