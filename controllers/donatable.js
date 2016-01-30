@@ -12,8 +12,10 @@ exports.createDonatable = function(items, address, next){
 function handleFindDonatable(err, donatable, items, address, next){
     if(err)
         throw err
-    if(!donatable)
-        doSomething
+    if(!donatable){
+        handleNoDonatable(items, address, next);
+        return;
+    }
 
     for(var i = 0; i < items.length; i++){
         donatable.itemsRequested.push(items[i]);
