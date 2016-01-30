@@ -8,11 +8,12 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var morgan = require('morgan');
 
-var twilioController = require('./controllers/twilio')
+var twilioController = require('./controllers/twilio');
+var itemController = require('./controllers/item');
 
 var app = express();
 
-mongoose.connect('mongodb://localhost:27017/Shindig', function(err){
+mongoose.connect('mongodb://jeff:Wow123@candidate.63.mongolayer.com:10410/app46880463/pantry', function(err){
   if(err) throw err;
 });
 
@@ -22,6 +23,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.route('/api/v1/twilio')
   .post(twilioController.postTwilioMessage);
+
+app.route('/api/v1/items')
+  .get(itemController.getAllItems);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

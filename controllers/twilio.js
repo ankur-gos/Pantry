@@ -2,7 +2,10 @@
 // Ankur Goswami
 
 var twilio = require('twilio');
-var text = require('../Models/text');
+var Text = require('../Models/text');
+var donatable = require('./donatable');
+var parser = require('../textParser');
+var item = require('../Models/item');
 
 exports.postTwilioMessage = function(req, res, next){
     var text = new Text({
@@ -11,12 +14,21 @@ exports.postTwilioMessage = function(req, res, next){
         body: req.body.Body
     });
     text.save(function(err){
-        if(err)
-            next(err);
+        handleTextSave(err, req.body.Body, next);
     })
-    text.save
     var twiml = new twilio.TwimlResponse();
-    twiml.message('Hello World')
+    twiml.message('Message received. You\'ll be notified of your order approval');
     res.set('Content-Type', 'text/xml');
     res.send(twiml.toString());
+}
+
+function handleTextSave(err, textBody, next){
+    if(err)
+        next(err);
+    parser.parseText(textBody, function(items, address){
+        donatable.createDonatable(items, address, next);
+        for(var i = 0; i < items.length; i++){
+            item.iterateItem(items[i], 1, next);
+        }
+    })
 }
