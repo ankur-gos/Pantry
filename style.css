@@ -19,7 +19,7 @@ body{
 #sideList{
     list-style-type: none;
     font-size: 20px;
-    
+
     /*border:1px solid red;*/
     width: 100%;
 }
@@ -31,6 +31,45 @@ body{
 	/*padding-right: 0px;*/
 	/*width: 20px;*/
 }
+
+nav ul {
+	font-size: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/*/* positioning for dropdown 
+nav li {
+    float: left;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    min-width: 25%;
+}
+
+nav a {
+    display: block;
+    padding: 0 25px;
+}
+
+nav li ul {
+    float: left;
+    left: 0;
+    position: absolute;
+    top: 35px;
+    visibility: hidden;
+}
+
+nav li:hover ul {
+    top: 50px;
+    visibility: visible;
+}
+nav li ul li {
+    float: none;
+    width: 100%;
+}*/
 
 
 /*#FFF1E8 #ECD8C0 #BA9D7D #7C5B3C #10212B*/
