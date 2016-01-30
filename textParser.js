@@ -5,14 +5,14 @@ exports.textParser = function(request, callback)  {
         var splitOnColon = request.split(':');
         if(splitOnColon.length != 2)
             throw new Error("Multiple colons found");
-        addressParser(splitOnColon, handleAddressParser, callback)
+        addressParser(splitOnColon, callback)
 	}
 }
 
-function addressParser(splitArray, callback, topCallback){
+function addressParser(splitArray, callback){
     var address = splitArray[1];
     address = address.trim();
-    callback(splitArray[0], address, topCallback);
+    handleAddressParser(splitArray[0], address, callback);
 }
 
 function handleAddressParser(items, address, callback){
