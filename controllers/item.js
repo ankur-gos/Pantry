@@ -9,6 +9,16 @@ exports.iterateItem = function(item, amount, next){
     })
 }
 
+exports.getAllItems = function(req, res, next){
+    Item.find(function(err, items){
+        if(err){
+            next(err);
+            return;
+        }
+        res.json(items);
+    })
+}
+
 function handleItem(err, item, amount, next){
     if(err){
         next(err);
