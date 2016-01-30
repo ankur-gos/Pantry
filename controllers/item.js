@@ -14,7 +14,11 @@ function handleItem(err, item, amount, next){
         next(err);
         return;
     }
+    if(item){
+        item.amountRequested = item.amountRequested + amount;
+        item.save(next);
+        return;
+    }
 
-    item.amountRequested = item.amountRequested + amount;
-    item.save(next);
+    next(new Error("No item found"));
 }

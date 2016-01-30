@@ -12,7 +12,7 @@ var twilioController = require('./controllers/twilio')
 
 var app = express();
 
-mongoose.connect('mongodb://candidate.63.mongolayer.com:10410/app46880463/pantry', function(err){
+mongoose.connect('mongodb://jeff:Wow123@candidate.63.mongolayer.com:10410/app46880463/pantry', function(err){
   if(err) throw err;
 });
 
