@@ -1,0 +1,22 @@
+{
+  "name": "pantry",
+  "version": "1.0.0",
+  "description": "Homeless Helpter",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ankur-gos/Pantry.git"
+  },
+  "keywords": [
+    "pantry"
+  ],
+  "author": "Ankur Goswami",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ankur-gos/Pantry/issues"
+  },
+  "homepage": "https://github.com/ankur-gos/Pantry#readme"
+}
