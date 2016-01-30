@@ -10,7 +10,7 @@ exports.postTwilioMessage = function(req, res, next){
         number: req.body.From,
         body: req.body.Body
     });
-    text.save(function(err){
+    text.save(function(err, next){
         if(err)
             next(err);
     })
@@ -19,4 +19,10 @@ exports.postTwilioMessage = function(req, res, next){
     twiml.message('Hello World')
     res.set('Content-Type', 'text/xml');
     res.send(twiml.toString());
+}
+
+function handleTextSave(err, next){
+    if(err)
+        next(err);
+
 }
