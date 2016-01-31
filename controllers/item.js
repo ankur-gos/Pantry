@@ -3,11 +3,11 @@
 
 var Item = require('../Models/item');
 
-exports.iterateItem = function(item, amount, next, callback){
+exports.iterateItem = function(item, amount, itemIterator, next, callback){
     Item.findOne({ name: item }, function(err, item){
         handleItem(err, item, amount, next);
         if(callback)
-            callback(item.price);
+            callback(item.price, itemIterator);
     })
 }
 

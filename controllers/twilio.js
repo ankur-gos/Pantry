@@ -9,7 +9,7 @@ var client = new twilio.RestClient(accountSid, authToken);
 var Text = require('../Models/text');
 var donatable = require('./donatable');
 var parser = require('../textParser');
-var item = require('../Models/item');
+var item = require('../controllers/item');
 
 exports.postTwilioMessage = function(req, res, next){
     var text = new Text({
@@ -27,12 +27,14 @@ exports.postTwilioMessage = function(req, res, next){
 }
 
 function handleTextSave(err, textBody, number, next){
-    if(err)
+    if(err){
+        console.error(err);
         next(err);
+    }
     parser.parseText(textBody, function(items, address){
         donatable.createDonatable(items, address, number, next);
         for(var i = 0; i < items.length; i++){
-            item.iterateItem(items[i], 1, next);
+            item.iterateItem(items[i], 1, 0, next);
         }
     })
 }
@@ -43,7 +45,9 @@ exports.sendConfirmText = function(number, item, next){
         from: fromNumber,
         body: 'Your order of ' + item + ' has been ordered'
     }, function(error, message){
-        if(error)
+        if(error){
+            console.error(error);
             next(error);
+        }
     });
 }

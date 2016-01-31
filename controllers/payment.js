@@ -10,10 +10,14 @@ var emailSender = require('../EmailSender');
 
 exports.chargeAccount = function(req, res, next){
     if(checkValidRequest(req)){
-        for(var i = 0; i < req.body.items.length; i++){
-            itemController.iterateItem(req.body.items[i], -1, next, function(priceString){
-                donatable.removeDonatableItem(req.body.items[i], next, function(item, address, number){
-                    handleRemoveDonatableItem(item, address, req.body.stripeToken, priceString, number, next);
+        for(var i = 0; i < req.body.items.length; ++i){
+            itemController.iterateItem(req.body.items[i], -1, i, next, function(priceString, preservedIndex){
+                var flag = false;
+                donatable.removeDonatableItem(req.body.items[preservedIndex], next, function(item, address, number){
+                    if(!flag){
+                        handleRemoveDonatableItem(item, address, req.body.token, priceString, number, next);
+                    }
+                    flag = true;
                 });
             });
         }
@@ -24,7 +28,8 @@ exports.chargeAccount = function(req, res, next){
 }
 
 function checkValidRequest(req){
-    if(!req.body.items || !req.body.stripeToken){
+    console.log(req.body.items);
+    if(!req.body.items || !req.body.token){
         return false
     }
     return true
@@ -45,7 +50,7 @@ function handleRemoveDonatableItem(item, address, token, priceString, number, ne
 
 function charge(amount, token, description, completionHandler){
     var charge = stripe.charges.create({
-        amount: amound, // amount in cents, again
+        amount: amount, // amount in cents, again
         currency: "usd",
         source: token,
         description: description

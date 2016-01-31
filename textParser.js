@@ -26,5 +26,5 @@ function handleAddressParser(items, address, callback){
         if(value !== ""){
             return true;
         }
-    }), address)
+    }), address);
 }

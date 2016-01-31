@@ -38,6 +38,7 @@ function handleNoDonatable(items, address, number, next){
 
 exports.removeDonatableItem = function(item, next, callback){
     Donatable.find(function(err, donatables){
+        console.log(item);
         handleRemoveDonatableItem(err, donatables, item, next, callback);
     })
 }
@@ -49,9 +50,16 @@ function handleRemoveDonatableItem(err, donatables, item, next, callback){
     }
 
     for(var i = 0; i < donatables.length; i++){
-        var items = donatables[i].items;
+        var items = donatables[i].itemsRequested;
         if(items.indexOf(item) > -1){
-            donatables[i].items = items.filter(function(value){
+            console.log('yo')
+            console.log(items.filter(function(value){
+                if(value != item){
+                    return true;
+                }
+            }))
+            console.log('??')
+            donatables[i].itemsRequested = items.filter(function(value){
                 if(value != item){
                     return true;
                 }
