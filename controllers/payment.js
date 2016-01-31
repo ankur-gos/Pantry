@@ -2,15 +2,17 @@
 // Ankur Goswami
 
 var stripe = require("stripe")("sk_test_BQokikJOvBiI2HlWgH4olfQ2");
-var Item = require()
+var Item = require('../Models/item');
 var itemController = require('./item');
 var donatable = require('./donatable');
+var twilio = require('./twilio');
+var emailSender = require('../EmailSender');
 
 exports.chargeAccount = function(req, res, next){
     if(checkValidRequest(req)){
-        itemController.iterateItem(req.body.item, -1, next, callback(priceString){
-            donatable.removeDonatableItem(req.body.item, next, function(item, address){
-                handleRemoveDonatableItem(item, address, req.body.stripeToken, priceString, next);
+        itemController.iterateItem(req.body.item, -1, next, function(priceString){
+            donatable.removeDonatableItem(req.body.item, next, function(item, address, number){
+                handleRemoveDonatableItem(item, address, req.body.stripeToken, priceString, number, next);
             });
         });
     } else{
@@ -26,10 +28,17 @@ function checkValidRequest(req){
     return true
 }
 
-function handleRemoveDonatableItem(item, address, token, priceString, next){
+function handleRemoveDonatableItem(item, address, token, priceString, number, next){
     var price = parseFloat(priceString, 10);
     price = price * 100;
-    charge(price, token, item, next);
+    charge(price, token, item, function(err){
+        if(err){
+            next(err);
+            return;
+        }
+        twilio.sendConfirmText(number, item, next);
+        emailSender.sendConfirmationEmail(address, item);
+    });
 }
 
 function charge(amount, token, description, completionHandler){

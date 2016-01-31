@@ -6,6 +6,7 @@ var schema = mongoose.Schema;
 
 var DonatableSchema = new mongoose.Schema({
     address: String,
+    number: String,
     numberOfItemsRequested: Number,
     itemsRequested: [ String ]
 });

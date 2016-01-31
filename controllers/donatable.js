@@ -3,17 +3,17 @@
 
 var Donatable = require('../Models/donatable');
 
-exports.createDonatable = function(items, address, next){
+exports.createDonatable = function(items, address, number, next){
     Donatable.findOne({ address: address }, function(err, donatable){
-        handleFindDonatable(err, donatable, items, address, next);
+        handleFindDonatable(err, donatable, items, address, number, next);
     })
 }
 
-function handleFindDonatable(err, donatable, items, address, next){
+function handleFindDonatable(err, donatable, items, address, number, next){
     if(err)
         throw err
     if(!donatable){
-        handleNoDonatable(items, address, next);
+        handleNoDonatable(items, address, number, next);
         return;
     }
 
@@ -25,11 +25,12 @@ function handleFindDonatable(err, donatable, items, address, next){
     donatable.save(next);
 }
 
-function handleNoDonatable(items, address, next){
+function handleNoDonatable(items, address, number, next){
     var donatable = new Donatable({
         address: address,
         numberOfItemsRequested: items.length,
-        itemsRequested: items
+        itemsRequested: items,
+        number: number
     });
 
     donatable.save(next);
@@ -59,7 +60,7 @@ function handleRemoveDonatableItem(err, donatables, item, next, callback){
                 next(err);
                 return;
             })
-            callback(item, address)
+            callback(item, donatables[i].address, donatables[i].number)
             break;
         }
     }

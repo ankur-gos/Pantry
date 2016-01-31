@@ -11,6 +11,7 @@ var cors = require('cors')
 
 var twilioController = require('./controllers/twilio');
 var itemController = require('./controllers/item');
+var paymentController = require('./controllers/payment');
 
 var app = express();
 
@@ -31,7 +32,7 @@ app.route('/api/v1/items')
   .get(itemController.getAllItems);
 
 app.route('/api/v1/payment')
-  .post();
+  .post(paymentController.chargeAccount);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
