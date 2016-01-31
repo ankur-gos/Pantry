@@ -13,7 +13,7 @@ http.createServer(function (request, response) {
 		name: "Eggs",
 		category: "Food",
 		amountRequested: 10,
-		imageimageLink: "http://icons.iconarchive.com/icons/icons8/ios7/512/Food-Eggs-icon.png",
+		imageLink: "http://icons.iconarchive.com/icons/icons8/ios7/512/Food-Eggs-icon.png",
 		price: "10.00"
 
 	});
@@ -26,7 +26,7 @@ http.createServer(function (request, response) {
 		name: "Toothpaste",
 		category: "Health",
 		amountRequested: 10,
-		imageimageLink: "http://plainicon.com/dboard/userprod/2921_4eb4c/prod_thumb/plainicon.com-60547-256px-de2.png",
+		imageLink: "http://plainicon.com/dboard/userprod/2921_4eb4c/prod_thumb/plainicon.com-60547-256px-de2.png",
 		price: "5.00"
 	})
 
