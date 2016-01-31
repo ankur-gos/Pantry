@@ -1,6 +1,6 @@
 // MODULE
 var myApp = angular.module('myApp', ['stripe']).config(function(){
-    Stripe.setPublishableKey('sk_test_WwPOmU2pxRtIncI21z6XDVWF')
+    Stripe.setPublishableKey('pk_test_THvHsOWpkIuiLs0wD3NSKIFj')
 });
 
 // CONTROLLERS
@@ -40,7 +40,7 @@ myApp.controller('mainController', ['$scope', '$filter', '$http', function ($sco
     }
 
     $scope.saveCustomer = function(status, response) {
-        $http.post('/api/v1/payment', { token: response.id, items: $scope.listOfItems});
+        $http.post('https://glacial-inlet-76332.herokuapp.com/api/v1/payment', { token: response.id, items: $scope.listOfItems});
     };
 
     $scope.items = {"item":[
