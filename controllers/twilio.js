@@ -41,9 +41,9 @@ function handleTextSave(err, textBody, number, next){
 
 exports.sendConfirmText = function(number, item, next){
     client.messages.create({
-        to: number,
-        from: fromNumber,
-        body: 'Your order of ' + item + ' has been ordered'
+        To: number,
+        From: fromNumber,
+        Body: 'Your order of ' + item + ' has been ordered'
     }, function(error, message){
         if(error){
             console.error(error);
