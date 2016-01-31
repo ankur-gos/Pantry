@@ -35,11 +35,19 @@ myApp.controller('mainController', ['$scope', '$filter', function ($scope, $filt
         //console.log(cartItemObjects);
         var productPrice = parseFloat(product.price, 10);
         productPrice += productPrice;
+        var form = elem.find('payForm')
+        form.submit(function(){ //listen for submit event
+            $.each(params, function(i,param){
+                $('<input />').attr('type', 'hidden')
+                    .attr('name', param.name)
+                    .attr('value', param.value)
+                    .appendTo('#commentForm');
+            });
+
+            return true;
+        });
         console.log(productPrice);
     }
-
-
-
 
     $scope.items = {"item":[
         {"itemName":"Bread", "count":10, "category": "food"},

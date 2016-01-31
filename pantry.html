@@ -40,7 +40,7 @@
 
 
         <!-- Payment button -->
-<!--         <form action="http://glacial-inlet-76332.herokuapp.com/api/v1/payment" method="POST" >
+        <form ng-submit="paySubmit" ngController="MainController">
           <script
             src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
@@ -50,7 +50,7 @@
             data-amount="2000"
             data-locale="auto">
           </script>
-        </form> -->
+        </form>
 
 
 
@@ -158,7 +158,7 @@
             {{object.price}}
           </div>
         </div>
-        
+
       </div>
     </div>
 
