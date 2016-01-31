@@ -39,8 +39,20 @@
           <ul class = "nav navbar-nav navbar-right">
 
 
-           <!-- About button -->
-            <li class = "active"><a href = "#">About</a></li>
+        <!-- Payment button -->
+<!--         <form action="http://glacial-inlet-76332.herokuapp.com/api/v1/payment" method="POST" >
+          <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+            data-image="/img/documentation/checkout/marketplace.png"
+            data-name="Stripe.com"
+            data-description="2 widgets"
+            data-amount="2000"
+            data-locale="auto">
+          </script>
+        </form> -->
+
+
 
 
             <!-- Dropdown list for resources -->
@@ -79,30 +91,6 @@
         </ul>
       </div>
     </div>
-
-    <!-- Login -->
-<!--     <div class = "modal fade" id = "contact" role = "dialog">
-      <div class = "modal-dialog">
-        <div class = "modal-content">
-          <div class = "modal-header">
-
-            <h4>Login</h4>
-
-          </div>
-          <div class = "modal-body">
-
-            User ID: <input type="text" name="fname"><br>
-            Password: <input type="text" name="pass"><br>
-
-          </div>
-          <div class = "modal-footer">
-
-            <a class = "btn btn-default" data-dismiss = "modal">Login</a>
-
-          </div>
-        </div>
-      </div>
-    </div> -->
 
     <!-- Pay -->
     <div class = "modal fade" id = "pay" role = "dialog">
@@ -205,6 +193,8 @@
       <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
       <script src="Angularscript.js"></script>
       <script src="cssmenu/dropScript.js"></script>
+
+      <script src="pantryStripe.js"></script>
 
       <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
       <script type="text/javascript">
