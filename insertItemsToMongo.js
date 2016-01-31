@@ -14,7 +14,7 @@ http.createServer(function (request, response) {
 		category: "Food",
 		amountRequested: 10,
 		imageLink: "http://icons.iconarchive.com/icons/icons8/ios7/512/Food-Eggs-icon.png",
-		price: "10.00"
+		price: "3.00"
 
 	});
 
@@ -27,7 +27,7 @@ http.createServer(function (request, response) {
 		category: "Health",
 		amountRequested: 10,
 		imageLink: "http://plainicon.com/dboard/userprod/2921_4eb4c/prod_thumb/plainicon.com-60547-256px-de2.png",
-		price: "5.00"
+		price: "4.00"
 	})
 
 	item1.save(function(err){
@@ -39,7 +39,7 @@ http.createServer(function (request, response) {
 		category: "Health",
 		amountRequested: 10,
 		imageLink: "http://www.icon100.com/up/4037/128/15-dental-floss.png",
-		price: "2.50"
+		price: "3.50"
 	})
 
 	item2.save(function(err){
@@ -51,7 +51,7 @@ http.createServer(function (request, response) {
 		category: "Food",
 		amountRequested: 10,
 		imageLink: "http://icons.iconarchive.com/icons/iconsmind/outline/512/Milk-Bottle-icon.png",
-		price: "7.00"
+		price: "3.90"
 	});
 
 	item3.save(function(err){
@@ -75,7 +75,7 @@ http.createServer(function (request, response) {
 		category: "Food",
 		amountRequested: 10,
 		imageLink: "http://uxrepo.com/static/icon-sets/ocha/png32/512/000000/rice-512-000000.png",
-		price: "2.00"
+		price: "3.00"
 	});
 
 	item5.save(function(err){
@@ -95,11 +95,11 @@ http.createServer(function (request, response) {
 	});
 
 	var item7 = new Item({
-		name: "Apple",
+		name: "Apples",
 		category: "Food",
 		amountRequested: 10,
 		imageLink: "http://uxrepo.com/static/icon-sets/windows/png32/512/000000/food-apple-512-000000.png",
-		price: "3.25"
+		price: "2.00"
 	});
 
 	item7.save(function(err){
@@ -111,7 +111,7 @@ http.createServer(function (request, response) {
 		category: "Food",
 		amountRequested: 10,
 		imageLink: "http://icons.iconarchive.com/icons/icons8/windows-8/512/Plants-Tomato-icon.png",
-		price: "5.00"
+		price: "2.00"
 	});
 
 	item8.save(function(err){
@@ -123,7 +123,7 @@ http.createServer(function (request, response) {
 		category: "Food",
 		amountRequested: 10,
 		imageLink: "https://d30y9cdsu7xlg0.cloudfront.net/png/13650-200.png",
-		price: "3.75"
+		price: "3.00"
 	});
 
 	item9.save(function(err){
@@ -135,7 +135,7 @@ http.createServer(function (request, response) {
 		category: "Food",
 		amountRequested: 10,
 		imageLink: "http://icons.iconarchive.com/icons/icons8/windows-8/512/Food-Carrot-icon.png",
-		price: "4.50"
+		price: "2.00"
 	});
 
 	item10.save(function(err){
@@ -147,7 +147,7 @@ http.createServer(function (request, response) {
 		category: "Food",
 		amountRequested: 10,
 		imageLink: "http://icons.iconarchive.com/icons/icons8/windows-8/512/Food-Cheese-icon.png",
-		price: "5.00"
+		price: "4.50"
 	});
 
 	item11.save(function(err){
@@ -159,7 +159,7 @@ http.createServer(function (request, response) {
 		category: "Health",
 		amountRequested: 10,
 		imageLink: "http://icons.iconarchive.com/icons/iconsmind/outline/512/Band-Aid-icon.png",
-		price: "6.00"
+		price: "10.00"
 	});
 
 	item12.save(function(err){
@@ -171,7 +171,7 @@ http.createServer(function (request, response) {
 		category: "Health",
 		amountRequested: 10,
 		imageLink: "http://icons.iconarchive.com/icons/iconsmind/outline/512/First-Aid-icon.png",
-		price: "4.30"
+		price: "8.50"
 	});
 
 	item13.save(function(err){
@@ -183,7 +183,7 @@ http.createServer(function (request, response) {
 		category: "Food",
 		amountRequested: 10,
 		imageLink: "http://icons.iconarchive.com/icons/icons8/ios7/512/Animals-Chicken-icon.png",
-		price: "7.25"
+		price: "5.50"
 	});
 
 	item14.save(function(err){
@@ -195,7 +195,7 @@ http.createServer(function (request, response) {
 		category: "Food",
 		amountRequested: 10,
 		imageLink: "http://www.historicfortsnelling.org/a-place-in-time/fortsnelling/img/Store/Icons/butter.png",
-		price: "4.40"
+		price: "3.75"
 	});
 
 	item15.save(function(err){
@@ -220,7 +220,7 @@ http.createServer(function (request, response) {
 		category: "Food",
 		amountRequested: 10,
 		imageLink: "http://icons.iconarchive.com/icons/iconsmind/outline/512/Banana-icon.png",
-		price: "4.25"
+		price: "2.50"
 	});
 
 	item18.save(function(err){
@@ -232,7 +232,7 @@ http.createServer(function (request, response) {
 		category: "Clothing",
 		amountRequested: 10,
 		imageLink: "http://uxrepo.com/static/icon-sets/ocha/png32/512/000000/clothing-512-000000.png",
-		price: "15.50"
+		price: "10.00"
 	});
 
 	item20.save(function(err){
@@ -244,7 +244,7 @@ http.createServer(function (request, response) {
 		category: "Clothing",
 		amountRequested: 10,
 		imageLink: "http://icons.iconarchive.com/icons/danieledesantis/christmas/512/sock-icon.png",
-		price: "7.00"
+		price: "2.20"
 	});
 
 	item21.save(function(err){
@@ -256,7 +256,7 @@ http.createServer(function (request, response) {
 		category: "Clothing",
 		amountRequested: 10,
 		imageLink: "http://icons.iconarchive.com/icons/iconsmind/outline/512/Pants-icon.png",
-		price: "17.00"
+		price: "10.00"
 	});
 
 	item22.save(function(err){
@@ -280,7 +280,7 @@ http.createServer(function (request, response) {
 		category: "Education",
 		amountRequested: 10,
 		imageLink: "http://uxrepo.com/static/icon-sets/font-awesome/png32/512/000000/pencil-squared-512-000000.png",
-		price: "1.00"
+		price: "4.60"
 	});
 
 	item24.save(function(err){
@@ -292,7 +292,7 @@ http.createServer(function (request, response) {
 		category: "Education",
 		amountRequested: 10,
 		imageLink: "http://uxrepo.com/static/icon-sets/windows/png32/512/000000/paper-512-000000.png",
-		price: "1.50"
+		price: "1.70"
 	});
 
 	item25.save(function(err){
