@@ -67,7 +67,7 @@
           <!-- <li class='active'><a href='#'><span>Home</span></a></li>   -->
             <li class='has-sub'><a href='#' ng-click="innerList($index)"><span>{{item}}</span></a>
               <ul>
-                 <li ng-if="products.amountRequested>0" ng-repeat= "products in value |filter: filtering " ><a href='#' ng-click="addItem($index, products); "><span>{{products.name}}</span><span class="badge">{{products.amountRequested}}</span></a></li>
+                 <li ng-if="products.amountRequested>0" ng-repeat= "products in value |filter: filtering| orderBy: '-amountRequested'" ><a href='#' ng-click="addItem($index, products); "><span>{{products.name}}</span><span class="badge">{{products.amountRequested}}</span></a></li>
                  <!-- <li class='last'><a href='#'><span>{{products}}</span></a></li> -->
               </ul>
             </li>
@@ -154,9 +154,10 @@
          <span style = "color: red">{{cartPrice | currency: "$"}}</span></p>
          <hr>
          <div id = "donation-button">
+          <a href = "#pay" data-toggle = "modal" style = "color: white;">
           <div class = "container">
-            <a href = "#pay" data-toggle = "modal" style = "color: white;"><p>CHECK OUT</p></a>
-          </div>
+            <p>CHECK OUT</p>
+          </div></a>
         </div>
       </div>
     </div>
