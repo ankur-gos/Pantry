@@ -36,6 +36,10 @@ function handleItem(err, item, amount, next){
                 next(err);
                 return;
             }
+            console.log(item);
+            if(!err){
+                console.log("Item added");
+            }
         });
         return;
     }

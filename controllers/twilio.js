@@ -34,7 +34,10 @@ function handleTextSave(err, textBody, number, next){
     parser.parseText(textBody, function(items, address){
         donatable.createDonatable(items, address, number, next);
         for(var i = 0; i < items.length; i++){
-            item.iterateItem(items[i], 1, 0, next);
+            item.iterateItem(items[i], 1, 0, next, callback( some, thing){
+                console.log(some);
+                console.log(thing);
+            });
         }
     })
 }
