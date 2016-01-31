@@ -19,13 +19,14 @@
   </head>
 
   <body ng-app = "myApp">
-    <!-- Menu -->
+
+    <!-- Navbar -->
     <div class = "navbar navbar-inverse navbar-fixed-top" >
       <div class = "container">
 
         <a href = "pantry.html" class = "navbar-brand">Pantry</a>
 
-        <!-- Navbar button -->
+        <!-- Navbar button for mobile -->
         <button class = "navbar-toggle" data-toggle = "collapse"
           data-target = ".navHeaderCollapse">
           <span class = "icon-bar"></span>
@@ -36,59 +37,47 @@
         <div class = "collapse navbar-collapse navHeaderCollapse">
           <ul class = "nav navbar-nav navbar-right">
 
-            <!-- About button -->
-            <li class = "active"><a href = "#">About</a></li>
+
+           <!-- About button -->
+            <!-- <li class = "active"><a href = "#">About</a></li> -->
+
 
             <!-- Dropdown list for resources -->
             <li class = "dropdown">
               <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">
-                Resources <b class = "caret"></b></a>
+              Resources <b class = "caret"></b></a>
               <ul class = "dropdown-menu">
                 <li><a href = "http://www.santacruzhsc.org">Santa Cruz Homeless Services Center</a></li>
                 <li><a href = "http://www.endveteranhomelessness.org/education/homeless-registry">Homeless Veteran Registry</a></li>
-
                 <!-- add more links -->
               </ul>
             </li>
 
-            <li><a href = "#">Suggestions</a></li>
+            <!-- <li><a href = "#">Suggestions</a></li> -->
 
             <li><a href = "#contact" data-toggle = "modal">Login</a></li>
+            <li><a href = "#pay" data-toggle = "modal">Donate</a></li>
 
           </ul>
         </div>
-
       </div>
     </div>
 
-
-<div ng-controller ="mainController">
-  <div id='cssmenu' >
-    <div data-ng-init="init()"> </div>   
-    <ul ng-repeat= "item in categories" >
-      <!-- <li class='active'><a href='#'><span>Home</span></a></li>   -->
-        <li class='has-sub'><a href='#'><span>{{item}}</span></a>
-          <ul ng-repeat= "products in categories" >
-             <li><a href='#'><span>{{products}}</span></a></li>
-             <!-- <li class='last'><a href='#'><span>{{products}}</span></a></li> -->
-          </ul>
-        </li>
-    </ul>
-
-  </div>  
-
-  <!-- Request Sidebar -->
-<!--      <div class="container" id = "sidebar1234">
-       <div data-ng-init="init()"> </div> 
-      <h2>Needed Items</h2>
-      <div class = "sidebar-nav" ng-repeat= "item in loadedItems| limitTo:10:0| orderBy:'-count'" >
-
-        <li id = "sideList"><a href="#">{{item.itemName + '   '}} <span class="badge">{{item.count}}</span></a></li>
-      </div> 
-    </div> -->
-</div>
-   
-
+    <!-- Sidebar -->
+    <div ng-controller ="mainController" id=rightSideBar>
+      <div id='cssmenu'>
+        <div data-ng-init="init()"> </div>   
+        <ul ng-repeat= "item in categories" >
+          <!-- <li class='active'><a href='#'><span>Home</span></a></li>   -->
+            <li class='has-sub'><a href='#'><span>{{item}}</span></a>
+              <ul>
+                 <li ng-repeat= "products in value" ><a href='#'><span>{{products.name}}</span></a></li>
+                 <!-- <li class='last'><a href='#'><span>{{products}}</span></a></li> -->
+              </ul>
+            </li>
+        </ul>
+      </div>
+    </div>
 
     <!-- Login -->
     <div class = "modal fade" id = "contact" role = "dialog">
@@ -113,6 +102,100 @@
         </div>
       </div>
     </div>
+
+    <!-- Pay -->
+    <div class = "modal fade" id = "pay" role = "dialog">
+      <div class = "modal-dialog">
+        <div class = "modal-content">
+          <div class = "modal-header">
+
+            <h4>Donate</h4>
+
+          </div>
+          <div class = "modal-body">
+          
+          <!--Stripe inputs-->
+            <form action="" method="POST" id="payment-form">
+              <span class="payment-errors"></span>
+
+              <div class="form-row">
+                <label>
+                  <span>Card Number</span>
+                  <input type="text" size="20" data-stripe="number"/>
+                </label>
+              </div>
+
+              <div class="form-row">
+                <label>
+                  <span>CVC</span>
+                  <input type="text" size="4" data-stripe="cvc"/>
+                </label>
+              </div>
+
+              <div class="form-row">
+                <label>
+                  <span>Expiration (MM/YYYY)</span>
+                  <input type="text" size="2" data-stripe="exp-month"/>
+                </label>
+                <span> / </span>
+                <input type="text" size="4" data-stripe="exp-year"/>
+              </div>
+
+              <button type="submit">Submit Payment</button>
+            </form>
+
+          </div>
+<!--           <div class = "modal-footer">
+
+            <a class = "btn btn-default" data-dismiss = "modal">Donate</a>
+
+          </div> -->
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Shopping Cart -->
+    <div id = "page-content-wrapper">
+      <div class = "container">
+
+        <!-- create subcontainers based on number of results -->
+        <div id = "page-element">
+          <div class = "show-image">
+            <img name = "item" src = "https://d30y9cdsu7xlg0.cloudfront.net/png/13650-200.png"
+            width = "90px" height = "90px" style = "position: relative; left: 15px;">
+            <!-- button deletes item from array, which removes own container -->
+            <a href = "#"><img name = "close" src = "http://www.cannabistraininguniversity.com/wp-content/uploads/2015/07/red-x.png"
+            width = "30px" height = "30px" style = "position: relative; top: -58px; left: 40px;"></a>
+            <hr>$4.20
+          </div>
+        </div>
+
+        <div id = "page-element">
+          <div class = "show-image">
+            <img name = "item" src = "https://cdn4.iconfinder.com/data/icons/clothicons/512/015-Socks-512.png"
+            width = "90px" height = "90px" style = "position: relative; left: 15px;">
+            <!-- button deletes item from array, which removes own container -->
+            <a href = "#"><img name = "close" src = "http://www.cannabistraininguniversity.com/wp-content/uploads/2015/07/red-x.png"
+            width = "30px" height = "30px" style = "position: relative; top: -58px; left: 40px;"></a>
+            <hr>$1.00
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  <!-- Request Sidebar -->
+<!--      <div class="container" id = "sidebar1234">
+       <div data-ng-init="init()"> </div> 
+      <h2>Needed Items</h2>
+      <div class = "sidebar-nav" ng-repeat= "item in loadedItems| limitTo:10:0| orderBy:'-count'" >
+
+        <li id = "sideList"><a href="#">{{item.itemName + '   '}} <span class="badge">{{item.count}}</span></a></li>
+      </div> 
+    </div> -->
+
+
 
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
       <!-- Latest compiled and minified JavaScript -->
