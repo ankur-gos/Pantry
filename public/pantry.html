@@ -12,7 +12,7 @@
     
     <link href="favicon.ico" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="/cssmenu/dropStyles.css">
+    <link rel="stylesheet" href="cssmenu/dropStyles.css">
 
 
     <title>CSS MenuMaker</title>
@@ -37,23 +37,6 @@
 
         <div class = "collapse navbar-collapse navHeaderCollapse">
           <ul class = "nav navbar-nav navbar-right">
-
-
-        <!-- Payment button -->
-        <!-- <form ng-submit="paySubmit" ngController="MainController">
-          <script
-            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-            data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
-            data-image="/img/documentation/checkout/marketplace.png"
-            data-name="Stripe.com"
-            data-description="2 widgets"
-            data-amount="2000"
-            data-locale="auto">
-          </script>
-        </form> -->
-
-
-
 
             <!-- Dropdown list for resources -->
             <li class = "dropdown">
@@ -152,7 +135,7 @@
         <!-- create subcontainers based on number of results -->
         <div id = "page-element" ng-repeat="Object in cartItemObjects track by $index">
           <div class = "show-image">
-            <img name = "item" src = "https://d30y9cdsu7xlg0.cloudfront.net/png/13650-200.png"
+            <img name = "item" ng-src = "{{Object.imageLink}}"
             width = "90px" height = "90px" style = "position: relative; left: 15px;">
             <!-- button deletes item from array, which removes own container -->
             <a href = "#"><img name = "close" src = "http://www.cannabistraininguniversity.com/wp-content/uploads/2015/07/red-x.png"
@@ -188,12 +171,12 @@
       integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
       <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
       <script src="Angularscript.js"></script>
-      <script src="/cssmenu/dropScript.js"></script>
+      <script src="cssmenu/dropScript.js"></script>
 
       <script src="pantryStripe.js"></script>
 
       <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-      <script type="text/javascript" src="/bower_components/stripe-angular/stripe-angular.js"></script>
+      <script type="text/javascript" src="bower_components/stripe-angular/stripe-angular.js"></script>
   </div>
   </body>
 </html>
