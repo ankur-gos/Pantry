@@ -32,44 +32,56 @@ body{
 	/*width: 20px;*/
 }
 
-nav ul {
+/*nav ul {
 	font-size: 20px;
     list-style: none;
     margin: 0;
     padding: 0;
     width: 100%;
-}
-
-/*/* positioning for dropdown 
-nav li {
-    float: left;
-    margin: 0;
-    padding: 0;
-    position: relative;
-    min-width: 25%;
-}
-
-nav a {
-    display: block;
-    padding: 0 25px;
-}
-
-nav li ul {
-    float: left;
-    left: 0;
-    position: absolute;
-    top: 35px;
-    visibility: hidden;
-}
-
-nav li:hover ul {
-    top: 50px;
-    visibility: visible;
-}
-nav li ul li {
-    float: none;
-    width: 100%;
 }*/
 
+/* Sidebar styling */
+#rightSideBar {
+	width: 280px;
+	margin-top: 80px;
+	margin-left: 50px;
+}
+
+/* Shopping cart wrapper */
+#page-content-wrapper {
+	margin-top: -300px;
+	margin-left: 250px;
+}
+
+/* Shopping cart container */
+#page-content-wrapper .container {
+    background-color: black;
+    width: 800px;
+    height: 100%;
+    margin-top: 75px;
+    /*border: 5px solid gray;*/
+}
+
+/* Item in cart */
+#page-element {
+    float: left;
+    background-color: gray;
+    padding-top: 15px;
+    margin: 10px;
+    display: inline-block;
+    width: 182.5px;
+    height: 182.5px;
+    /* text mod */
+    color: white;
+    text-align: center;
+    /* set border styling */
+    border-style: solid;
+    border-width: 5px;
+    border-color: white;
+    /* round borders */
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+}
 
 /*#FFF1E8 #ECD8C0 #BA9D7D #7C5B3C #10212B*/
