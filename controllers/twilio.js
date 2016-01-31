@@ -27,8 +27,10 @@ exports.postTwilioMessage = function(req, res, next){
 }
 
 function handleTextSave(err, textBody, number, next){
-    if(err)
+    if(err){
+        console.error(err);
         next(err);
+    }
     parser.parseText(textBody, function(items, address){
         donatable.createDonatable(items, address, number, next);
         for(var i = 0; i < items.length; i++){
@@ -43,7 +45,9 @@ exports.sendConfirmText = function(number, item, next){
         from: fromNumber,
         body: 'Your order of ' + item + ' has been ordered'
     }, function(error, message){
-        if(error)
+        if(error){
+            console.error(error);
             next(error);
+        }
     });
 }
