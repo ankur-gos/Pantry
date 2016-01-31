@@ -10,8 +10,8 @@ myApp.controller('mainController', ['$scope', '$filter', '$http',  function ($sc
     $scope.testing = {};
 
     var listOfItems = [];
-    var cartItemObjects = [];
-    var cartPrice = 0;
+    $scope.cartItemObjects = [];
+    $scope.cartPrice = 0;
 
     $scope.categories = ['Food', 'Health', 'Clothing', 'Education' ];
 
@@ -33,36 +33,16 @@ myApp.controller('mainController', ['$scope', '$filter', '$http',  function ($sc
         console.log(listOfItems);
 
         //item object list
-        $scope.cartItemObjects = cartItemObjects.push(product);
+        $scope.cartItemObjects.push(product);
+
         //console.log(cartItemObjects);
         var productPrice = parseFloat(product.price, 10);
-        productPrice += productPrice;
+        $scope.cartPrice += productPrice;
     }
 
     $scope.saveCustomer = function(status, response) {
         $http.post('http://localhost:3000/api/v1/payment', { token: response.id, items: listOfItems});
     };
-
-    $scope.items = {"item":[
-        {"itemName":"Bread", "count":10, "category": "food"},
-        {"itemName":"Toothpaste", "count":12, "category": "hygiene"},
-        {"itemName":"Condoms", "count":13, "category": "misc."},
-        {"itemName":"Socks", "count":4, "category": "clothing"},
-        {"itemName":"Eggs", "count":5, "category": "food"},
-        {"itemName":"Milk", "count":6, "category": "food"},
-        {"itemName":"Blankets", "count":17, "category": "clothing"},
-        {"itemName":"Cereal", "count":8, "category": "food"},
-        {"itemName":"Spoons", "count":9, "category": "misc."},
-        {"itemName":"Chips", "count":10, "category": "food"},
-        {"itemName":"Snacks", "count":11, "category": "food"},
-        {"itemName":"Medicine", "count":12, "category": "hygiene"},
-        {"itemName":"Shirts", "count":13, "category": "clothing"},
-        {"itemName":"money", "count":14, "category": "misc."}
-
-    ]};
-
-
-
 
     $scope.value = '';
         $scope.init = function(){

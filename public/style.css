@@ -1,17 +1,15 @@
 body {
-	background-image: url("woodGrain.jpg");
+	background-color: white;
 	/*background-repeat: auto;*/
 }
 
-#sidebar1234 {
-	/*margin-top: 100px;*/
-	margin-left: 50px;
-	padding: 100px 10px 500px 15px;
-
-    border:10px solid black;
-	background-color:  #BA9D7D;
-	height: 100%;
-	width: 200px;
+/* navbar gradient */
+#navbar-fixed-top {
+  background: #66665e;
+  background: -moz-linear-gradient(#33365e 0%, #45463d 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #33365e), color-stop(100%, #45463d));
+  background: -webkit-linear-gradient(#33365e 0%, #45463d 100%);
+  background: linear-gradient(#33365e 0%, #45463d 100%);
 }
 
 #sideList {
@@ -24,18 +22,8 @@ body {
 .badge{
 	color: white;
 	float:right;
-	/*margin-left: auto;*/
-	/*padding-right: 0px;*/
-	/*width: 20px;*/
 }
 
-/*nav ul {
-	font-size: 20px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-}*/
 
 /* Sidebar styling */
 #rightSideBar {
@@ -53,34 +41,60 @@ body {
 
 /* Shopping cart container */
 #page-content-wrapper .container {
-    background-color: black;
     height: 100%;
     min-height: 300px;
     margin-top: 75px;
-		width: 900px;
+	width: 900px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    padding-top: 20px;
     /*border: 5px solid gray;*/
 }
 
 /* Item in cart */
 #page-element {
     float: left;
-    background-color: gray;
-    padding-top: 15px;
+    background-color: white;
+    padding-top: 10px;
     margin: 10px;
     display: inline-block;
     width: 182.5px;
     height: 182.5px;
     /* text mod */
-    color: white;
+    color: black;
     text-align: center;
+    text-size: 12pt;
     /* set border styling */
     border-style: solid;
     border-width: 5px;
-    border-color: white;
+    border-color: black;
     /* round borders */
     border-radius: 15px;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
+}
+
+/* Total display */
+#total-wrapper .container {
+    background-color: white;
+    font-size: 20px;
+    padding-top: 25px;
+    width: 400px;
+    height: 100px;
+    /* set border styling */
+    border-style: solid;
+    border-width: 5px;
+    border-color: black;
+    /* round borders */
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+}
+
+#total {
+    font-family: "Lucida Console", Monaco, monospace;
+    text-align: center;
 }
 
 /*#FFF1E8 #ECD8C0 #BA9D7D #7C5B3C #10212B*/
