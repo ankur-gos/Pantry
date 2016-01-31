@@ -7,6 +7,7 @@ var ItemSchema = new mongoose.Schema({
     category: String,
     price: String,
     name: String,
+    imageLink: String,
     amountRequested: Number
 })
 
