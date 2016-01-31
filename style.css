@@ -1,9 +1,9 @@
-body{
+body {
 	background-image: url("woodGrain.jpg");
 	/*background-repeat: auto;*/
 }
 
-#sidebar1234{
+#sidebar1234 {
 	/*margin-top: 100px;*/
 	margin-left: 50px;
 	padding: 100px 10px 500px 15px;
@@ -11,15 +11,12 @@ body{
     border:10px solid black;
 	background-color:  #BA9D7D;
 	height: 100%;
-
 	width: 200px;
-
 }
 
-#sideList{
+#sideList {
     list-style-type: none;
     font-size: 20px;
-
     /*border:1px solid red;*/
     width: 100%;
 }
@@ -42,23 +39,23 @@ body{
 
 /* Sidebar styling */
 #rightSideBar {
+	position: absolute;
 	width: 280px;
-	margin-top: 80px;
-	margin-left: 50px;
+	margin-top: -50px;
+	margin-left: 350px;
 }
 
 /* Shopping cart wrapper */
 #page-content-wrapper {
-	margin-top: -300px;
-	margin-left: 250px;
+	margin-left: 270px;
 }
 
 /* Shopping cart container */
 #page-content-wrapper .container {
     background-color: black;
-    width: 800px;
     height: 100%;
     margin-top: 75px;
+		width: 900px;
     /*border: 5px solid gray;*/
 }
 
