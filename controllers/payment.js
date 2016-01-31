@@ -14,7 +14,6 @@ exports.chargeAccount = function(req, res, next){
             itemController.iterateItem(req.body.items[i], -1, i, next, function(priceString, preservedIndex){
                 var flag = false;
                 donatable.removeDonatableItem(req.body.items[preservedIndex], next, function(item, address, number){
-                    console.log("5");
                     if(!flag){
                         calculateAndCharge(req.body.items, address, req.body.token, priceString, number, next);
                     }
@@ -56,7 +55,6 @@ function calculateAndCharge(items, address, token, priceString, number, next){
             next(err);
             return;
         }
-        console.log("3");
         charge(total, token, items.join(", "), function(err){
             if(err){
                 console.error(err);
@@ -74,7 +72,6 @@ function charge(amount, token, description, completionHandler){
         source: token,
         description: description
     }, function(err, charge) {
-        console.log("2");
         completionHandler(err);
     });
 }

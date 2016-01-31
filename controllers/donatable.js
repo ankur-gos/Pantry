@@ -39,11 +39,14 @@ function handleNoDonatable(items, address, number, next){
         itemsRequested: items,
         number: number
     });
-
+    console.log("FOO");
     donatable.save(function(err){
         if(err){
             console.error(err);
             next(err);
+        }
+        if(!err){
+            console.log("Saved donatable");
         }
     });
 }
