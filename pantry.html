@@ -70,9 +70,9 @@
         <div data-ng-init="init()"> </div>   
         <ul ng-repeat= "item in categories" >
           <!-- <li class='active'><a href='#'><span>Home</span></a></li>   -->
-            <li class='has-sub'><a href='#'><span>{{item}}</span></a>
+            <li class='has-sub'><a href='#' ng-click="innerList($index)"><span>{{item}}</span></a>
               <ul>
-                 <li ng-repeat= "products in value" ><a href='#'><span>{{products.name}}</span></a></li>
+                 <li ng-repeat= "products in value |filter:'Food' " ><a href='#'><span>{{products.name}}</span></a></li>
                  <!-- <li class='last'><a href='#'><span>{{products}}</span></a></li> -->
               </ul>
             </li>
@@ -109,9 +109,7 @@
       <div class = "modal-dialog">
         <div class = "modal-content">
           <div class = "modal-header">
-
             <h4>Donate</h4>
-
           </div>
           <div class = "modal-body">
           

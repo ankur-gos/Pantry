@@ -2,12 +2,29 @@
 var myApp = angular.module('myApp', []);
 
 // CONTROLLERS
-myApp.controller('mainController', ['$scope', function ($scope) {
+myApp.controller('mainController', ['$scope', '$filter', function ($scope, $filter) {
     $scope.class = "Choose a class above.";
     $scope.loadedItems;
-    $scope.testing;
+    $scope.testing = {};
+
+    $scope.listOfItems;
 
     $scope.categories = ['Food', 'Health', 'Clothing', 'Education' ];
+
+    $scope.innerList = function(index){
+        console.log(index);
+        $scope.filtering = $scope.categories[index];
+        console.log($scope.filtering);
+        $scope.objects = $filter('filter')($scope.items[0], "Food");
+        console.log($scope.objects);
+    }
+
+    $scope.addItem = function(){
+        
+    }
+
+
+
 
     $scope.items = {"item":[
         {"itemName":"Bread", "count":10, "category": "food"},
@@ -26,6 +43,9 @@ myApp.controller('mainController', ['$scope', function ($scope) {
         {"itemName":"money", "count":14, "category": "misc."}
 
     ]};
+
+
+
 
     $scope.value = '';
         $scope.init = function(){
