@@ -59,7 +59,7 @@ myApp.controller('mainController', ['$scope', '$filter', '$http',  function ($sc
     };
 
     $scope.saveCustomer = function(status, response) {
-        $http.post('https://glacial-inlet-76332.herokuapp.com/api/v1/payment', { token: response.id, items: listOfItems});
+        $http.post('https://glacial-inlet-76332.herokuapp.com/api/v1/payment', { token: response.id, items: $scope.listOfItems});
     };
 
     $scope.value = '';

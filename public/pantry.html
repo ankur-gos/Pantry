@@ -67,7 +67,7 @@
           <!-- <li class='active'><a href='#'><span>Home</span></a></li>   -->
             <li class='has-sub'><a href='#' ng-click="innerList($index)"><span>{{item}}</span></a>
               <ul>
-                 <li ng-repeat= "products in value |filter: filtering " ><a href='#' ng-click="addItem($index, products); "><span>{{products.name}}</span></a></li>
+                 <li ng-repeat= "products in value |filter: filtering " ><a href='#' ng-click="addItem($index, products); "><span>{{products.name}}</span><span class="badge">{{products.amountRequested}}</span></a></li>
                  <!-- <li class='last'><a href='#'><span>{{products}}</span></a></li> -->
               </ul>
             </li>
