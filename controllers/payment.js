@@ -10,11 +10,13 @@ var emailSender = require('../EmailSender');
 
 exports.chargeAccount = function(req, res, next){
     if(checkValidRequest(req)){
-        itemController.iterateItem(req.body.item, -1, next, function(priceString){
-            donatable.removeDonatableItem(req.body.item, next, function(item, address, number){
-                handleRemoveDonatableItem(item, address, req.body.stripeToken, priceString, number, next);
+        for(var i = 0; i < req.body.items.length; i++){
+            itemController.iterateItem(req.body.items[i], -1, next, function(priceString){
+                donatable.removeDonatableItem(req.body.items[i], next, function(item, address, number){
+                    handleRemoveDonatableItem(item, address, req.body.stripeToken, priceString, number, next);
+                });
             });
-        });
+        }
     } else{
         res.statusCode(400);
         next(new Error("Bad request"));
@@ -22,7 +24,7 @@ exports.chargeAccount = function(req, res, next){
 }
 
 function checkValidRequest(req){
-    if(!req.body.item || !req.body.stripeToken){
+    if(!req.body.items || !req.body.stripeToken){
         return false
     }
     return true
