@@ -20,7 +20,7 @@
   </head>
 
   <body ng-app = "myApp">
-
+  <div ng-controller="mainController">
     <!-- Navbar -->
     <div class = "navbar navbar-inverse navbar-fixed-top" >
       <div class = "container">
@@ -77,14 +77,14 @@
     </div>
 
     <!-- Sidebar -->
-    <div ng-controller ="mainController" id=rightSideBar>
+    <div  id=rightSideBar>
       <div id='cssmenu'>
         <div data-ng-init="init()"> </div>   
         <ul ng-repeat= "item in categories" >
           <!-- <li class='active'><a href='#'><span>Home</span></a></li>   -->
             <li class='has-sub'><a href='#' ng-click="innerList($index)"><span>{{item}}</span></a>
               <ul>
-                 <li ng-repeat= "products in value |filter:'Food' " ><a href='#'><span>{{products.name}}</span></a></li>
+                 <li ng-repeat= "products in value |filter:'Food' " ><a href='#' ng-click="addItem($index, value, products)"><span>{{products.name}}</span></a></li>
                  <!-- <li class='last'><a href='#'><span>{{products}}</span></a></li> -->
               </ul>
             </li>
@@ -144,31 +144,21 @@
 
     <!-- Shopping Cart -->
     <div id = "page-content-wrapper">
-      <div class = "container">
+      <div class = "container" >
 
         <!-- create subcontainers based on number of results -->
-        <div id = "page-element">
+        <div id = "page-element" ng-repeat="object in cartItem">
           <div class = "show-image">
             <img name = "item" src = "https://d30y9cdsu7xlg0.cloudfront.net/png/13650-200.png"
             width = "90px" height = "90px" style = "position: relative; left: 15px;">
             <!-- button deletes item from array, which removes own container -->
             <a href = "#"><img name = "close" src = "http://www.cannabistraininguniversity.com/wp-content/uploads/2015/07/red-x.png"
             width = "30px" height = "30px" style = "position: relative; top: -58px; left: 40px;"></a>
-            <hr>$4.20
+            <hr>
+            {{object.price}}
           </div>
         </div>
-
-        <div id = "page-element">
-          <div class = "show-image">
-            <img name = "item" src = "https://cdn4.iconfinder.com/data/icons/clothicons/512/015-Socks-512.png"
-            width = "90px" height = "90px" style = "position: relative; left: 15px;">
-            <!-- button deletes item from array, which removes own container -->
-            <a href = "#"><img name = "close" src = "http://www.cannabistraininguniversity.com/wp-content/uploads/2015/07/red-x.png"
-            width = "30px" height = "30px" style = "position: relative; top: -58px; left: 40px;"></a>
-            <hr>$1.00
-          </div>
-        </div>
-
+        
       </div>
     </div>
 
@@ -200,6 +190,6 @@
       Stripe.setPublishableKey('sk_test_WwPOmU2pxRtIncI21z6XDVWF');
       // ...
       </script>
-
+  </div>
   </body>
 </html>

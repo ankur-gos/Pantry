@@ -7,7 +7,9 @@ myApp.controller('mainController', ['$scope', '$filter', function ($scope, $filt
     $scope.loadedItems;
     $scope.testing = {};
 
-    $scope.listOfItems;
+    var listOfItems = [];
+    var cartItemObjects = [];
+    var cartPrice = 0;
 
     $scope.categories = ['Food', 'Health', 'Clothing', 'Education' ];
 
@@ -19,8 +21,21 @@ myApp.controller('mainController', ['$scope', '$filter', function ($scope, $filt
         console.log($scope.objects);
     }
 
-    $scope.addItem = function(){
-        
+    $scope.addItem = function(index, arr, product){
+        //console.log(index);
+        //console.log(arr[index]);
+
+        //item name list
+
+        $scope.listOfItems = listOfItems.push(product.name);
+        console.log(listOfItems);
+
+        //item object list
+        $scope.cartItemObjects = cartItemObjects.push(product);
+        //console.log(cartItemObjects);
+        var productPrice = parseFloat(product.price, 10);
+        productPrice += productPrice;
+        console.log(productPrice);
     }
 
 
