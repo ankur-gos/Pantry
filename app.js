@@ -7,6 +7,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var morgan = require('morgan');
+var cors = require('cors')
 
 var twilioController = require('./controllers/twilio');
 var itemController = require('./controllers/item');
@@ -21,13 +22,16 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.disable('etag');
+app.use(cors());
 
 app.route('/api/v1/twilio')
   .post(twilioController.postTwilioMessage);
 
 app.route('/api/v1/items')
   .get(itemController.getAllItems);
+
+app.route('/api/v1/payment')
+  .post();
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
