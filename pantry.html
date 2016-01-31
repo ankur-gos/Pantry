@@ -37,28 +37,29 @@
         <div class = "collapse navbar-collapse navHeaderCollapse">
           <ul class = "nav navbar-nav navbar-right">
 
-            <!-- About button -->
-            <li class = "active"><a href = "#">About</a></li>
+
+           <!-- About button -->
+            <!-- <li class = "active"><a href = "#">About</a></li> -->
+
 
             <!-- Dropdown list for resources -->
             <li class = "dropdown">
               <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">
-                Resources <b class = "caret"></b></a>
+              Resources <b class = "caret"></b></a>
               <ul class = "dropdown-menu">
                 <li><a href = "http://www.santacruzhsc.org">Santa Cruz Homeless Services Center</a></li>
                 <li><a href = "http://www.endveteranhomelessness.org/education/homeless-registry">Homeless Veteran Registry</a></li>
-
                 <!-- add more links -->
               </ul>
             </li>
 
-            <li><a href = "#">Suggestions</a></li>
+            <!-- <li><a href = "#">Suggestions</a></li> -->
 
             <li><a href = "#contact" data-toggle = "modal">Login</a></li>
+            <li><a href = "#pay" data-toggle = "modal">Donate</a></li>
 
           </ul>
         </div>
-
       </div>
     </div>
 
@@ -75,6 +76,82 @@
               </ul>
             </li>
         </ul>
+      </div>
+    </div>
+
+    <!-- Login -->
+    <div class = "modal fade" id = "contact" role = "dialog">
+      <div class = "modal-dialog">
+        <div class = "modal-content">
+          <div class = "modal-header">
+
+            <h4>Login</h4>
+
+          </div>
+          <div class = "modal-body">
+
+            User ID: <input type="text" name="fname"><br>
+            Password: <input type="text" name="pass"><br>
+
+          </div>
+          <div class = "modal-footer">
+
+            <a class = "btn btn-default" data-dismiss = "modal">Login</a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pay -->
+    <div class = "modal fade" id = "pay" role = "dialog">
+      <div class = "modal-dialog">
+        <div class = "modal-content">
+          <div class = "modal-header">
+
+            <h4>Donate</h4>
+
+          </div>
+          <div class = "modal-body">
+          
+          <!--Stripe inputs-->
+            <form action="" method="POST" id="payment-form">
+              <span class="payment-errors"></span>
+
+              <div class="form-row">
+                <label>
+                  <span>Card Number</span>
+                  <input type="text" size="20" data-stripe="number"/>
+                </label>
+              </div>
+
+              <div class="form-row">
+                <label>
+                  <span>CVC</span>
+                  <input type="text" size="4" data-stripe="cvc"/>
+                </label>
+              </div>
+
+              <div class="form-row">
+                <label>
+                  <span>Expiration (MM/YYYY)</span>
+                  <input type="text" size="2" data-stripe="exp-month"/>
+                </label>
+                <span> / </span>
+                <input type="text" size="4" data-stripe="exp-year"/>
+              </div>
+
+              <button type="submit">Submit Payment</button>
+            </form>
+
+          </div>
+<!--           <div class = "modal-footer">
+
+            <a class = "btn btn-default" data-dismiss = "modal">Donate</a>
+
+          </div> -->
+
+        </div>
       </div>
     </div>
 
@@ -118,32 +195,7 @@
       </div> 
     </div> -->
 
-   
 
-
-    <!-- Login -->
-    <div class = "modal fade" id = "contact" role = "dialog">
-      <div class = "modal-dialog">
-        <div class = "modal-content">
-          <div class = "modal-header">
-
-            <h4>Login</h4>
-
-          </div>
-          <div class = "modal-body">
-
-            User ID: <input type="text" name="fname"><br>
-            Password: <input type="text" name="pass"><br>
-
-          </div>
-          <div class = "modal-footer">
-
-            <a class = "btn btn-default" data-dismiss = "modal">Login</a>
-
-          </div>
-        </div>
-      </div>
-    </div>
 
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
       <!-- Latest compiled and minified JavaScript -->
