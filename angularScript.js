@@ -1,8 +1,10 @@
 // MODULE
-var myApp = angular.module('myApp', []);
+var myApp = angular.module('myApp', ['stripe']).config(function(){
+    Stripe.setPublishableKey('sk_test_WwPOmU2pxRtIncI21z6XDVWF')
+});
 
 // CONTROLLERS
-myApp.controller('mainController', ['$scope', '$filter', function ($scope, $filter) {
+myApp.controller('mainController', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
     $scope.class = "Choose a class above.";
     $scope.loadedItems;
     $scope.testing = {};
@@ -35,19 +37,11 @@ myApp.controller('mainController', ['$scope', '$filter', function ($scope, $filt
         //console.log(cartItemObjects);
         var productPrice = parseFloat(product.price, 10);
         productPrice += productPrice;
-        var form = elem.find('payForm')
-        form.submit(function(){ //listen for submit event
-            $.each(params, function(i,param){
-                $('<input />').attr('type', 'hidden')
-                    .attr('name', param.name)
-                    .attr('value', param.value)
-                    .appendTo('#commentForm');
-            });
-
-            return true;
-        });
-        console.log(productPrice);
     }
+
+    $scope.saveCustomer = function(status, response) {
+        $http.post('/api/v1/payment', { token: response.id, items: $scope.listOfItems});
+    };
 
     $scope.items = {"item":[
         {"itemName":"Bread", "count":10, "category": "food"},
