@@ -1,7 +1,7 @@
 // payment.js
 // Ankur Goswami
 
-var stripe = require("stripe")("sk_test_BQokikJOvBiI2HlWgH4olfQ2");
+var stripe = require("stripe")("sk_test_WwPOmU2pxRtIncI2lz6XDVWF");
 var Item = require('../Models/item');
 var itemController = require('./item');
 var donatable = require('./donatable');
