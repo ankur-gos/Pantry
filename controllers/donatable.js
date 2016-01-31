@@ -2,6 +2,8 @@
 // 30 January 2016
 
 var Donatable = require('../Models/donatable');
+var twilio = require('./twilio');
+var emailSender = require('../EmailSender');
 
 exports.createDonatable = function(items, address, number, next){
     Donatable.findOne({ address: address }, function(err, donatable){
@@ -22,7 +24,12 @@ function handleFindDonatable(err, donatable, items, address, number, next){
         donatable.numberOfItemsRequested = donatable.numberOfItemsRequested + 1;
     }
 
-    donatable.save(next);
+    donatable.save(function(err){
+        if(err){
+            console.error(err);
+            next(err);
+        }
+    });
 }
 
 function handleNoDonatable(items, address, number, next){
@@ -33,12 +40,16 @@ function handleNoDonatable(items, address, number, next){
         number: number
     });
 
-    donatable.save(next);
+    donatable.save(function(err){
+        if(err){
+            console.error(err);
+            next(err);
+        }
+    });
 }
 
 exports.removeDonatableItem = function(item, next, callback){
     Donatable.find(function(err, donatables){
-        console.log(item);
         handleRemoveDonatableItem(err, donatables, item, next, callback);
     })
 }
@@ -48,17 +59,14 @@ function handleRemoveDonatableItem(err, donatables, item, next, callback){
         next(err);
         return;
     }
-
     for(var i = 0; i < donatables.length; i++){
         var items = donatables[i].itemsRequested;
         if(items.indexOf(item) > -1){
-            console.log('yo')
             console.log(items.filter(function(value){
                 if(value != item){
                     return true;
                 }
             }))
-            console.log('??')
             donatables[i].itemsRequested = items.filter(function(value){
                 if(value != item){
                     return true;
@@ -68,6 +76,8 @@ function handleRemoveDonatableItem(err, donatables, item, next, callback){
                 next(err);
                 return;
             })
+            twilio.sendConfirmText(donatables[i].number, item, next);
+            emailSender.sendConfirmationEmail(donatables[i].address, item);
             callback(item, donatables[i].address, donatables[i].number)
             break;
         }

@@ -4,7 +4,7 @@ var myApp = angular.module('myApp', ['stripe']).config(function(){
 });
 
 // CONTROLLERS
-myApp.controller('mainController', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
+myApp.controller('mainController', ['$scope', '$filter', '$http',  function ($scope, $filter, $http) {
     $scope.class = "Choose a class above.";
     $scope.loadedItems;
     $scope.testing = {};
@@ -41,7 +41,7 @@ myApp.controller('mainController', ['$scope', '$filter', '$http', function ($sco
     }
 
     $scope.saveCustomer = function(status, response) {
-        $http.post('https://glacial-inlet-76332.herokuapp.com/api/v1/payment', { token: response.id, items: $scope.listOfItems});
+        $http.post('https://glacial-inlet-76332.herokuapp.com/api/v1/payment', { token: response.id, items: listOfItems});
     };
 
     $scope.value = '';

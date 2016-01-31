@@ -15,7 +15,7 @@ exports.chargeAccount = function(req, res, next){
                 var flag = false;
                 donatable.removeDonatableItem(req.body.items[preservedIndex], next, function(item, address, number){
                     if(!flag){
-                        handleRemoveDonatableItem(item, address, req.body.token, priceString, number, next);
+                        calculateAndCharge(req.body.items, address, req.body.token, priceString, number, next);
                     }
                     flag = true;
                 });
@@ -35,17 +35,33 @@ function checkValidRequest(req){
     return true
 }
 
-function handleRemoveDonatableItem(item, address, token, priceString, number, next){
-    var price = parseFloat(priceString, 10);
-    price = price * 100;
-    charge(price, token, item, function(err){
+function calculateCharge(items, callback){
+    Item.find({name: {$in : items}}, function(err, items){
+        var total = 0;
+        for(var i = 0; i < items.length; i++){
+            var price = parseFloat(items[i].price, 10);
+            price = price * 100;
+            total = total + price;
+        }
+        callback(err, total)
+    });
+}
+
+function calculateAndCharge(items, address, token, priceString, number, next){
+    calculateCharge(items, function(err, total){
         if(err){
+            console.error(err);
             next(err);
             return;
         }
-        twilio.sendConfirmText(number, item, next);
-        emailSender.sendConfirmationEmail(address, item);
-    });
+        charge(total, token, items.join(", "), function(err){
+            if(err){
+                console.error(err);
+                next(err);
+                return;
+            }
+        });
+    })
 }
 
 function charge(amount, token, description, completionHandler){
