@@ -22,7 +22,7 @@ mongoose.connect('mongodb://jeff:Wow123@candidate.63.mongolayer.com:10410/app468
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.set('view engine', 'html');
+app.use(express.static(__dirname + '/public'));
 
 app.use(cors());
 
