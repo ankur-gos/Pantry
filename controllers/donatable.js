@@ -3,17 +3,17 @@
 
 var Donatable = require('../Models/donatable');
 
-exports.createDonatable = function(items, address, next){
+exports.createDonatable = function(items, address, number, next){
     Donatable.findOne({ address: address }, function(err, donatable){
-        handleFindDonatable(err, donatable, items, address, next);
+        handleFindDonatable(err, donatable, items, address, number, next);
     })
 }
 
-function handleFindDonatable(err, donatable, items, address, next){
+function handleFindDonatable(err, donatable, items, address, number, next){
     if(err)
         throw err
     if(!donatable){
-        handleNoDonatable(items, address, next);
+        handleNoDonatable(items, address, number, next);
         return;
     }
 
@@ -25,12 +25,43 @@ function handleFindDonatable(err, donatable, items, address, next){
     donatable.save(next);
 }
 
-function handleNoDonatable(items, address, next){
+function handleNoDonatable(items, address, number, next){
     var donatable = new Donatable({
         address: address,
         numberOfItemsRequested: items.length,
-        itemsRequested: items
+        itemsRequested: items,
+        number: number
     });
 
     donatable.save(next);
+}
+
+exports.removeDonatableItem = function(item, next, callback){
+    Donatable.find(function(err, donatables){
+        handleRemoveDonatableItem(err, donatables, item, next, callback);
+    })
+}
+
+function handleRemoveDonatableItem(err, donatables, item, next, callback){
+    if(err){
+        next(err);
+        return;
+    }
+
+    for(var i = 0; i < donatables.length; i++){
+        var items = donatables[i].items;
+        if(items.indexOf(item) > -1){
+            donatables[i].items = items.filter(function(value){
+                if(value != item){
+                    return true;
+                }
+            });
+            donatables[i].save(function(err){
+                next(err);
+                return;
+            })
+            callback(item, donatables[i].address, donatables[i].number)
+            break;
+        }
+    }
 }
