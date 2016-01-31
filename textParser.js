@@ -12,12 +12,15 @@ exports.parseText = function(request, callback)  {
 function parseAddress(splitArray, callback){
     var address = splitArray[1];
     address = address.trim();
+    console.log("1");
     handleAddressParser(splitArray[0], address, callback);
+    console.log("3");
 }
 
 function handleAddressParser(items, address, callback){
     var newItems = items.split(',');
     var splitItems = []
+    console.log("2");
     for(var i = 0; i < newItems.length; i++){
         splitItems.push(newItems[i].split(' '));
     }
@@ -27,4 +30,5 @@ function handleAddressParser(items, address, callback){
             return true;
         }
     }), address)
+    console.log("4");
 }

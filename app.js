@@ -23,6 +23,9 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/public'));
+app.set('views', __dirname + '/public');
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
 app.use(cors());
 
@@ -34,6 +37,11 @@ app.route('/api/v1/items')
 
 app.route('/api/v1/payment')
   .post(paymentController.chargeAccount);
+
+app.route('/')
+  .get(function(req, res){
+    res.render('pantry.html');
+  })
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -50,7 +58,7 @@ if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     app.set('view engine', 'jade');
-    res.render('error', {
+    res.render('error.jade', {
       message: err.message,
       error: err
     });
