@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="cssmenu/dropStyles.css">
 
+
     <title>CSS MenuMaker</title>
 
   </head>
@@ -39,7 +40,7 @@
 
 
            <!-- About button -->
-            <!-- <li class = "active"><a href = "#">About</a></li> -->
+            <li class = "active"><a href = "#">About</a></li>
 
 
             <!-- Dropdown list for resources -->
@@ -55,7 +56,7 @@
 
             <!-- <li><a href = "#">Suggestions</a></li> -->
 
-            <li><a href = "#contact" data-toggle = "modal">Login</a></li>
+            <!-- <li><a href = "#contact" data-toggle = "modal">Login</a></li> -->
             <li><a href = "#pay" data-toggle = "modal">Donate</a></li>
 
           </ul>
@@ -80,7 +81,7 @@
     </div>
 
     <!-- Login -->
-    <div class = "modal fade" id = "contact" role = "dialog">
+<!--     <div class = "modal fade" id = "contact" role = "dialog">
       <div class = "modal-dialog">
         <div class = "modal-content">
           <div class = "modal-header">
@@ -101,7 +102,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- Pay -->
     <div class = "modal fade" id = "pay" role = "dialog">
@@ -204,5 +205,13 @@
       <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
       <script src="Angularscript.js"></script>
       <script src="cssmenu/dropScript.js"></script>
+
+      <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+      <script type="text/javascript">
+      // This identifies your website in the createToken call below
+      Stripe.setPublishableKey('sk_test_WwPOmU2pxRtIncI21z6XDVWF');
+      // ...
+      </script>
+
   </body>
 </html>
