@@ -5,6 +5,7 @@ var Item = require('./Models/item');
 var http = require('http');
 
 http.createServer(function (request, response) {
+	console.log('hello');
 	mongoose.connect('mongodb://jeff:Wow123@candidate.63.mongolayer.com:10410/app46880463/pantry', function(err){
 	  if(err) throw err;
 	  console.log("connected");
@@ -303,8 +304,8 @@ http.createServer(function (request, response) {
 	item26.save(function(err){
 
 	});
+	
 	});
-
 	
 }).listen(1337);
 
