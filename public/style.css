@@ -1,15 +1,11 @@
 body {
-	background-color: white;
+	background-color: #f0ead6;
 	/*background-repeat: auto;*/
 }
 
 /* navbar gradient */
 #navbar-fixed-top {
-  background: #66665e;
-  background: -moz-linear-gradient(#33365e 0%, #45463d 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #33365e), color-stop(100%, #45463d));
-  background: -webkit-linear-gradient(#33365e 0%, #45463d 100%);
-  background: linear-gradient(#33365e 0%, #45463d 100%);
+  background: #434b4e;
 }
 
 #sideList {
@@ -43,8 +39,12 @@ body {
 #page-content-wrapper .container {
     height: 100%;
     min-height: 300px;
-    margin-top: 75px;
+    margin-top: 20px;
+    margin-bottom: 30px;
 	width: 900px;
+    border-style: solid;
+    border-width: 7px;
+    border-color: #434b4e;
     border-radius: 15px;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
@@ -55,7 +55,7 @@ body {
 /* Item in cart */
 #page-element {
     float: left;
-    background-color: white;
+    background-color: #C9B99F;
     padding-top: 10px;
     margin: 10px;
     display: inline-block;
@@ -81,7 +81,7 @@ body {
     font-size: 20px;
     padding-top: 25px;
     width: 400px;
-    height: 100px;
+    height: 200px;
     /* set border styling */
     border-style: solid;
     border-width: 5px;
@@ -97,4 +97,12 @@ body {
     text-align: center;
 }
 
+#donation-button .container {
+    background-color: #868e8e;
+    font-size: 30px;
+    width: 250px;
+    height: 75px;
+    text-align: center;
+    padding-bottom: 20px;
+}
 /*#FFF1E8 #ECD8C0 #BA9D7D #7C5B3C #10212B*/

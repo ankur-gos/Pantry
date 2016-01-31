@@ -25,7 +25,7 @@
     <div id = "navbar-fixed-top">
       <div class = "container">
 
-        <a href = "pantry.html" class = "navbar-brand">Pantry</a>
+        <a href = "pantry.html" class = "navbar-brand" style = "color: white;">Pantry</a>
 
         <!-- Navbar button for mobile -->
         <button class = "navbar-toggle" data-toggle = "collapse"
@@ -40,7 +40,7 @@
 
             <!-- Dropdown list for resources -->
             <li class = "dropdown">
-              <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">
+              <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown" style = "color: white;">
               Resources <b class = "caret"></b></a>
               <ul class = "dropdown-menu">
                 <li><a href = "http://www.santacruzhsc.org">Santa Cruz Homeless Services Center</a></li>
@@ -52,7 +52,7 @@
             <!-- <li><a href = "#">Suggestions</a></li> -->
 
             <!-- <li><a href = "#contact" data-toggle = "modal">Login</a></li> -->
-            <li><a href = "#pay" data-toggle = "modal">Donate</a></li>
+            <!-- <li><a href = "#pay" data-toggle = "modal">Donate</a></li> -->
 
           </ul>
         </div>
@@ -67,7 +67,7 @@
           <!-- <li class='active'><a href='#'><span>Home</span></a></li>   -->
             <li class='has-sub'><a href='#' ng-click="innerList($index)"><span>{{item}}</span></a>
               <ul>
-                 <li ng-repeat= "products in value |filter: filtering " ><a href='#' ng-click="addItem($index, products); "><span>{{products.name}}</span><span class="badge">{{products.amountRequested}}</span></a></li>
+                 <li ng-if="products.amountRequested>0" ng-repeat= "products in value |filter: filtering " ><a href='#' ng-click="addItem($index, products); "><span>{{products.name}}</span><span class="badge">{{products.amountRequested}}</span></a></li>
                  <!-- <li class='last'><a href='#'><span>{{products}}</span></a></li> -->
               </ul>
             </li>
@@ -111,15 +111,14 @@
                 <input type="text" size="4" data-stripe="exp-year"/>
               </div>
 
+              <!-- total in modal change-->
+              <p style = "text-weight: bold;">Your donation: <span style = "color:red;">{{cartPrice | currency: "$"}}</span></p>
+              <!-- total in modal change-->
+
               <button type="submit">Submit Payment</button>
             </form>
 
           </div>
-<!--           <div class = "modal-footer">
-
-            <a class = "btn btn-default" data-dismiss = "modal">Donate</a>
-
-          </div> -->
 
         </div>
       </div>
@@ -148,23 +147,19 @@
       </div>
     </div>
 
+    <!-- donation button -->
     <div id="total-wrapper">
       <div class="container">
         <p id="total">Subtotal({{cartItemObjects.length}} item<span ng-if = "cartItemObjects.length > 1">s</span>):
          <span style = "color: red">{{cartPrice | currency: "$"}}</span></p>
+         <hr>
+         <div id = "donation-button">
+          <div class = "container">
+            <a href = "#pay" data-toggle = "modal" style = "color: white;"><p>CHECK OUT</p></a>
+          </div>
+        </div>
       </div>
     </div>
-  <!-- Request Sidebar -->
-<!--      <div class="container" id = "sidebar1234">
-       <div data-ng-init="init()"> </div> 
-      <h2>Needed Items</h2>
-      <div class = "sidebar-nav" ng-repeat= "item in loadedItems| limitTo:10:0| orderBy:'-count'" >
-
-        <li id = "sideList"><a href="#">{{item.itemName + '   '}} <span class="badge">{{item.count}}</span></a></li>
-      </div> 
-    </div> -->
-
-
 
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
       <!-- Latest compiled and minified JavaScript -->

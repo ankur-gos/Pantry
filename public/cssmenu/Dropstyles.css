@@ -24,7 +24,7 @@
   border-bottom: 4px solid #656659;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  margin-top: 51px;
+  margin-top: 70px;
   margin-left: 5px;
 }
 #cssmenu a {
@@ -36,11 +36,11 @@
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #66665e), color-stop(100%, #45463d));
   background: -webkit-linear-gradient(#66665e 0%, #45463d 100%);
   background: linear-gradient(#66665e 0%, #45463d 100%);*/
-  background: #66665e;
-  background: -moz-linear-gradient(#33365e 0%, #45463d 100%);
+  background: #868E8E;
+/*  background: -moz-linear-gradient(#33365e 0%, #45463d 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #33365e), color-stop(100%, #45463d));
   background: -webkit-linear-gradient(#33365e 0%, #45463d 100%);
-  background: linear-gradient(#33365e 0%, #45463d 100%);
+  background: linear-gradient(#33365e 0%, #45463d 100%);*/
 
   border: 1px solid #45463d;
   -webkit-border-radius: 3px 3px 0 0;
