@@ -56,6 +56,8 @@ app.use(function(req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
+    console.error(err);
+    console.error(err.message);
     res.status(err.status || 500);
     app.set('view engine', 'jade');
     res.render('error.jade', {

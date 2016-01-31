@@ -82,4 +82,5 @@ function handleRemoveDonatableItem(err, donatables, item, next, callback){
             break;
         }
     }
+    next(new Error("No matching donatable"));
 }

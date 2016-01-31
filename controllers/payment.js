@@ -14,6 +14,7 @@ exports.chargeAccount = function(req, res, next){
             itemController.iterateItem(req.body.items[i], -1, i, next, function(priceString, preservedIndex){
                 var flag = false;
                 donatable.removeDonatableItem(req.body.items[preservedIndex], next, function(item, address, number){
+                    console.log("5");
                     if(!flag){
                         calculateAndCharge(req.body.items, address, req.body.token, priceString, number, next);
                     }
@@ -28,8 +29,8 @@ exports.chargeAccount = function(req, res, next){
 }
 
 function checkValidRequest(req){
-    console.log(req.body.items);
     if(!req.body.items || !req.body.token){
+        console.log(req.body.items);
         return false
     }
     return true
@@ -37,6 +38,7 @@ function checkValidRequest(req){
 
 function calculateCharge(items, callback){
     Item.find({name: {$in : items}}, function(err, items){
+        console.log("4");
         var total = 0;
         for(var i = 0; i < items.length; i++){
             var price = parseFloat(items[i].price, 10);
@@ -54,6 +56,7 @@ function calculateAndCharge(items, address, token, priceString, number, next){
             next(err);
             return;
         }
+        console.log("3");
         charge(total, token, items.join(", "), function(err){
             if(err){
                 console.error(err);
@@ -71,6 +74,7 @@ function charge(amount, token, description, completionHandler){
         source: token,
         description: description
     }, function(err, charge) {
+        console.log("2");
         completionHandler(err);
     });
 }

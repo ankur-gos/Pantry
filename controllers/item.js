@@ -14,6 +14,7 @@ exports.iterateItem = function(item, amount, itemIterator, next, callback){
 exports.getAllItems = function(req, res, next){
     Item.find(function(err, items){
         if(err){
+            console.error(err);
             next(err);
             return;
         }
@@ -23,12 +24,19 @@ exports.getAllItems = function(req, res, next){
 
 function handleItem(err, item, amount, next){
     if(err){
+        console.error(err);
         next(err);
         return;
     }
     if(item){
         item.amountRequested = item.amountRequested + amount;
-        item.save(next);
+        item.save(function(err){
+            if(err){
+                console.error(err);
+                next(err);
+                return;
+            }
+        });
         return;
     }
 
