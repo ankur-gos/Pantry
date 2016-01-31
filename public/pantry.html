@@ -67,7 +67,7 @@
           <!-- <li class='active'><a href='#'><span>Home</span></a></li>   -->
             <li class='has-sub'><a href='#' ng-click="innerList($index)"><span>{{item}}</span></a>
               <ul>
-                 <li ng-repeat= "products in value |filter:'Food' " ><a href='#' ng-click="addItem($index, value, products); "><span>{{products.name}}</span></a></li>
+                 <li ng-repeat= "products in value |filter: filtering " ><a href='#' ng-click="addItem($index, products); "><span>{{products.name}}</span></a></li>
                  <!-- <li class='last'><a href='#'><span>{{products}}</span></a></li> -->
               </ul>
             </li>
@@ -139,7 +139,8 @@
             width = "90px" height = "90px" style = "position: relative; left: 15px;">
             <!-- button deletes item from array, which removes own container -->
             <a href = "#"><img name = "close" src = "http://www.cannabistraininguniversity.com/wp-content/uploads/2015/07/red-x.png"
-            width = "30px" height = "30px" style = "position: relative; top: -58px; left: 40px;"></a>
+            width = "30px" height = "30px" style = "position: relative; top: -58px; left: 40px;" ng-click = "close($index, Object)" ></a>
+
             <hr>{{Object.name}} : ${{Object.price}}
           </div>
         </div>
@@ -150,7 +151,15 @@
     <div id="total-wrapper">
       <div class="container">
         <p id="total">Subtotal({{cartItemObjects.length}} item<span ng-if = "cartItemObjects.length > 1">s</span>):
-         {{cartPrice | currency: "$"}} </p>
+         <span style = "color: red">{{cartPrice | currency: "$"}}</span></p>
+      </div>
+    </div>
+
+
+    <div id="total-wrapper">
+      <div class="container">
+        <p id="total">Subtotal({{cartItemObjects.length}} item<span ng-if = "cartItemObjects.length > 1">s</span>):
+         <span style = "color: red">{{cartPrice | currency: "$"}}</span></p>
       </div>
     </div>
   <!-- Request Sidebar -->
